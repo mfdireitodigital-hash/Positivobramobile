@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Conformidade - Grupo Positivo Brasil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f8f9fa;
+            font-size: 16px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        header p {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: #fff;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 100;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 0;
+            padding: 0 10px;
+            min-width: min-content;
+        }
+
+        nav li {
+            flex-shrink: 0;
+        }
+
+        nav a {
+            display: block;
+            text-decoration: none;
+            color: #1e3c72;
+            font-weight: 600;
+            font-size: 0.85em;
+            padding: 12px 10px;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+
+        nav a:active {
+            color: #2a5298;
+        }
+
+        main {
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            background: white;
+            margin: 15px 0;
+            padding: 20px 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #1e3c72;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        h3 {
+            color: #2a5298;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        h4 {
+            color: #333;
+            font-size: 1.05em;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        strong {
+            color: #1e3c72;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            font-size: 0.9em;
+            overflow-x: auto;
+            display: block;
+        }
+
+        table th {
+            background-color: #1e3c72;
+            color: white;
+            padding: 12px 8px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.9em;
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .danger {
+            background-color: #f8d7da;
+            padding: 15px;
+            border-left: 4px solid #dc3545;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .success {
+            background-color: #d4edda;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .image-caption {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .checklist {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            margin-top: 2px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checklist-item label {
+            cursor: pointer;
+            flex: 1;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .quiz-container {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .quiz-question {
+            background: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #2a5298;
+        }
+
+        .quiz-question h4 {
+            color: #1e3c72;
+            margin-bottom: 12px;
+            font-size: 1em;
+            line-height: 1.4;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: flex-start;
+            margin: 10px 0;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .quiz-option:active {
+            background-color: #f0f0f0;
+        }
+
+        .quiz-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            margin-top: 2px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .quiz-option label {
+            cursor: pointer;
+            flex: 1;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .quiz-button {
+            background-color: #2a5298;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+
+        .quiz-button:active {
+            background-color: #1e3c72;
+        }
+
+        .quiz-result {
+            display: none;
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #28a745;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .quiz-result.show {
+            display: block;
+        }
+
+        footer {
+            background-color: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 20px 15px;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:active {
+            text-decoration: underline;
+        }
+
+        .signature {
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                font-size: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 10px 20px;
+            }
+
+            nav a {
+                padding: 10px 15px;
+                font-size: 0.9em;
+            }
+
+            section {
+                margin: 20px auto;
+                padding: 30px;
+                max-width: 900px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            h3 {
+                font-size: 1.3em;
+            }
+
+            table {
+                font-size: 1em;
+            }
+
+            table th, table td {
+                padding: 12px;
+            }
+
+            footer {
+                padding: 25px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Manual de Conformidade</h1>
+        <p>Grupo Positivo Brasil</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#contexto">Contexto</a></li>
+            <li><a href="#meta">Meta</a></li>
+            <li><a href="#gatilhos">Gatilhos</a></li>
+            <li><a href="#legislacao">Lei</a></li>
+            <li><a href="#casos">Casos</a></li>
+            <li><a href="#diretrizes">Diretrizes</a></li>
+            <li><a href="#estrategias">Estratégias</a></li>
+            <li><a href="#checklist">Check</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="intro">
+            <h2>Introdução</h2>
+            <p>O Grupo Positivo Brasil opera em um segmento altamente regulado: serviços de limpeza de CPF, aumento de score de crédito e blindagem de dados. Este manual foi desenvolvido para orientar a equipe de marketing sobre como comunicar esses serviços no Instagram e Facebook de forma segura, legal e eficaz.</p>
+            
+            <p>As redes sociais da Meta aplicam políticas rigorosas a anúncios e conteúdo relacionado a serviços financeiros. O não cumprimento resulta em rejeição de anúncios, restrição de contas, suspensão de páginas e, em casos graves, banimento permanente.</p>
+
+            <div class="highlight">
+                <strong>Objetivo:</strong> Fornecer orientações práticas para comunicação segura, legal e eficaz no Instagram e Facebook.
+            </div>
+        </section>
+
+        <section id="contexto">
+            <h2>Contexto Regulatório</h2>
+            
+            <h3>A Tríade Reguladora</h3>
+            <p>A comunicação sobre serviços financeiros está sujeita a três níveis de regulação:</p>
+
+            <h4>Meta (Instagram e Facebook)</h4>
+            <p>A plataforma proíbe anúncios que promovam produtos ou serviços financeiros de forma enganosa, deceptiva ou prejudicial.</p>
+
+            <h4>Legislação Brasileira</h4>
+            <p>CONAR, Lei de Defesa do Consumidor e BACEN estabelecem requisitos de transparência, clareza e honestidade.</p>
+
+            <h4>Jurisprudência</h4>
+            <p>Casos de bloqueio estabelecem padrões de conformidade que devem ser observados.</p>
+
+            <h3>Riscos de Não Conformidade</h3>
+            <ul>
+                <li>Rejeição de anúncios</li>
+                <li>Restrição de conta de publicidade</li>
+                <li>Suspensão de página</li>
+                <li>Banimento permanente</li>
+                <li>Multas regulatórias</li>
+                <li>Danos à reputação</li>
+                <li>Perda de investimento</li>
+            </ul>
+
+            <div class="danger">
+                <strong>Atenção:</strong> Banimentos permanentes são cada vez mais comuns. Conformidade é essencial desde o primeiro post.
+            </div>
+        </section>
+
+        <section id="meta">
+            <h2>Políticas da Meta</h2>
+            
+            <div class="image-container">
+                <img src="images/2NT9ORDsP7Mq.jpg" alt="Meta Financial Products">
+                <p class="image-caption">Meta classifica serviços financeiros como categoria especial</p>
+            </div>
+
+            <h3>Requisitos Gerais</h3>
+
+            <h4>Segmentação por Idade</h4>
+            <p>Ser direcionado apenas para maiores de 18 anos.</p>
+
+            <h4>Transparência</h4>
+            <p>Divulgar claramente todos os termos, taxas, riscos e condições.</p>
+
+            <h4>Sem Dados Financeiros</h4>
+            <p>Não solicitar CPF, conta ou dados de cartão em anúncios.</p>
+
+            <h4>Sem Atributos Pessoais</h4>
+            <p>Não mencionar status financeiro ou histórico de crédito negativo.</p>
+
+            <h4>Autorização Regulatória</h4>
+            <p>Demonstrar que está autorizado a operar no Brasil.</p>
+
+            <h3>Produtos Proibidos</h3>
+            <ul>
+                <li>Empréstimos de curto prazo (payday loans)</li>
+                <li>Adiantamentos de salário</li>
+                <li>Pagamentos de fiança</li>
+                <li>Empréstimos com prazo inferior a 90 dias</li>
+                <li>Penny auctions</li>
+                <li>Binary options</li>
+                <li>ICO ou criptomoedas não reguladas</li>
+                <li>Consolidação de dívidas enganosa</li>
+            </ul>
+
+            <h3>Categorias Especiais</h3>
+            <p>Serviços financeiros têm restrições adicionais:</p>
+            <ul>
+                <li>Segmentação apenas para maiores de 18 anos</li>
+                <li>Impossibilidade de usar certos dados de público</li>
+                <li>Bloqueio de Pixel e Conversions API</li>
+                <li>Revisão manual antes da aprovação</li>
+            </ul>
+
+            <div class="success">
+                <strong>Dica:</strong> Informar Meta sobre autorização regulatória aumenta taxa de aprovação.
+            </div>
+        </section>
+
+        <section id="gatilhos">
+            <h2>Glossário de Gatilhos</h2>
+            
+            <h3>Palavras-Chave de Alto Risco</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Palavra</th>
+                        <th>Alternativa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>"Empréstimo rápido"</td>
+                        <td>"Processo simplificado"</td>
+                    </tr>
+                    <tr>
+                        <td>"Aprovação garantida"</td>
+                        <td>"Análise rápida"</td>
+                    </tr>
+                    <tr>
+                        <td>"Sem análise"</td>
+                        <td>"Análise flexível"</td>
+                    </tr>
+                    <tr>
+                        <td>"Limpe em 24h"</td>
+                        <td>"Processo acelerado"</td>
+                    </tr>
+                    <tr>
+                        <td>"Score garantido"</td>
+                        <td>"Aumento de score"</td>
+                    </tr>
+                    <tr>
+                        <td>"Sem juros"</td>
+                        <td>"Taxas transparentes"</td>
+                    </tr>
+                    <tr>
+                        <td>"Dinheiro na hora"</td>
+                        <td>"Crédito rápido"</td>
+                    </tr>
+                    <tr>
+                        <td>"Negativado? Sem problema"</td>
+                        <td>"Recupere seu crédito"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Hashtags Proibidas</h3>
+            <p><strong>Evitar:</strong> #EmprestimoRapido #DinheiroNaHora #AprovacaoGarantida #SemAnaliseDeCredito #LimpeNomeRapido #CartaoGarantido #CreditoFacil #SemJuros</p>
+
+            <p><strong>Seguras:</strong> #EducacaoFinanceira #DicasDeCredito #RecupereSeuNome #ScoreAlto #VidaFinanceiraSegura</p>
+
+            <h3>Imagens Proibidas</h3>
+            <p><strong>Não usar:</strong></p>
+            <ul>
+                <li>Dinheiro em espécie</li>
+                <li>Cartões de crédito</li>
+                <li>Pessoas em desespero</li>
+                <li>Símbolos de riqueza exagerada</li>
+                <li>Gráficos enganosos</li>
+                <li>Documentos financeiros</li>
+                <li>Extratos bancários</li>
+            </ul>
+
+            <div class="highlight">
+                <strong>Importante:</strong> Uma única imagem de dinheiro pode resultar em rejeição de toda a campanha.
+            </div>
+        </section>
+
+        <section id="legislacao">
+            <h2>Legislação Brasileira</h2>
+            
+            <div class="image-container">
+                <img src="images/KKXiqjis72ep.jpeg" alt="CONAR">
+                <p class="image-caption">CONAR estabelece padrões de autorregulamentação</p>
+            </div>
+
+            <h3>CONAR</h3>
+            <p>Toda publicidade deve ser:</p>
+            <ul>
+                <li><strong>Honesta e Verdadeira:</strong> Sem afirmações falsas</li>
+                <li><strong>Clara e Transparente:</strong> Informando termos, custos e prazos</li>
+                <li><strong>Responsável:</strong> Sem explorar vulnerabilidades</li>
+                <li><strong>Verificável:</strong> Todas as afirmações comprovadas</li>
+            </ul>
+
+            <h3>Lei de Defesa do Consumidor</h3>
+            <p>Proíbe:</p>
+            <ul>
+                <li><strong>Publicidade Enganosa:</strong> Informações que induzem ao erro</li>
+                <li><strong>Publicidade Abusiva:</strong> Exploração de vulnerabilidade</li>
+                <li><strong>Omissão de Informações:</strong> Não informar sobre taxas, prazos ou riscos</li>
+            </ul>
+
+            <h3>BACEN</h3>
+            <p>Estabelece que:</p>
+            <ul>
+                <li><strong>Transparência:</strong> Informar taxa de juros, prazo e valor total</li>
+                <li><strong>Proteção:</strong> Ter canais de atendimento e reclamação</li>
+                <li><strong>Conformidade:</strong> Cumprir Resoluções CMN</li>
+            </ul>
+        </section>
+
+        <section id="casos">
+            <h2>Casos Reais de Bloqueio</h2>
+            
+            <h3>Caso 1: Promessas Enganosas</h3>
+            <p><strong>O que aconteceu:</strong> Empresa de crédito banida após 6 meses. Anúncios prometiam "aprovação em 24 horas" e "sem análise de crédito".</p>
+            <p><strong>Consequências:</strong> Perda de 50 mil seguidores, parada de campanhas pagas (R$ 15 mil/mês), impossibilidade de reativar por 2 anos.</p>
+            <p><strong>Lição:</strong> Não fazer promessas que não podem ser cumpridas.</p>
+
+            <h3>Caso 2: Atributos Pessoais</h3>
+            <p><strong>O que aconteceu:</strong> Fintech criou campanha "Negativado? Nós ajudamos!" segmentando para histórico de crédito ruim.</p>
+            <p><strong>Consequências:</strong> Rejeição de 100% dos anúncios, impossibilidade de anunciar por 30 dias.</p>
+            <p><strong>Lição:</strong> Não segmentar por características financeiras negativas.</p>
+
+            <h3>Caso 3: Imagens Enganosas</h3>
+            <p><strong>O que aconteceu:</strong> Empresa usou imagens de dinheiro e cartões, sugerindo "dinheiro na hora".</p>
+            <p><strong>Consequências:</strong> Banimento permanente da conta de publicidade.</p>
+            <p><strong>Lição:</strong> Imagens devem ser realistas e não sugerir resultados impossíveis.</p>
+
+            <h3>Caso 4: Falta de Transparência</h3>
+            <p><strong>O que aconteceu:</strong> Empresa de aumento de score não informava que envolvia negociação com credores.</p>
+            <p><strong>Consequências:</strong> Redução de alcance em 80%, impossibilidade de usar Pixel.</p>
+            <p><strong>Lição:</strong> Sempre divulgar claramente o que o serviço faz.</p>
+
+            <div class="danger">
+                <strong>Aviso:</strong> Estes são casos reais. Meta aplica essas regras rigorosamente.
+            </div>
+        </section>
+
+        <section id="diretrizes">
+            <h2>Diretrizes Visuais e de Conteúdo</h2>
+            
+            <h3>O Que NÃO Fazer</h3>
+            <ul>
+                <li><strong>Promessas Enganosas:</strong> Não prometer "garantido", "rápido" ou "100% certo"</li>
+                <li><strong>Exploração:</strong> Não fazer apelo ao medo ou desespero</li>
+                <li><strong>Omissão:</strong> Não esconder taxas, prazos ou condições</li>
+                <li><strong>Comparações Enganosas:</strong> Não comparar desonestamente com concorrentes</li>
+                <li><strong>Celebridades:</strong> Não usar sem consentimento explícito</li>
+                <li><strong>Sensacionalismo:</strong> Não usar manchetes alarmantes ou gráficos enganosos</li>
+            </ul>
+
+            <h3>O Que Fazer</h3>
+            <ul>
+                <li><strong>Educação:</strong> Criar conteúdo sobre crédito, score, direitos do consumidor</li>
+                <li><strong>Transparência:</strong> Informar claramente o que é oferecido, custos e limitações</li>
+                <li><strong>Depoimentos:</strong> Usar depoimentos reais com consentimento</li>
+                <li><strong>Imagens:</strong> Usar imagens profissionais que transmitem confiança</li>
+                <li><strong>CTA:</strong> Convidar para "Saber mais", "Conversar", não "Aprove agora"</li>
+                <li><strong>Contato:</strong> Incluir canais de atendimento e termos de serviço</li>
+            </ul>
+
+            <div class="image-container">
+                <img src="images/T2Rnjf8DC6RB.png" alt="Meta Advertising Policies">
+                <p class="image-caption">Meta fornece diretrizes detalhadas sobre publicidade</p>
+            </div>
+        </section>
+
+        <section id="estrategias">
+            <h2>Estratégias de Marketing Saudável</h2>
+            
+            <h3>Estratégia 1: Educação Financeira</h3>
+            <p>Criar conteúdo sobre:</p>
+            <ul>
+                <li>Como funciona o sistema de proteção ao crédito</li>
+                <li>O que é score de crédito</li>
+                <li>Direitos do consumidor negativado</li>
+                <li>Passos para recuperar o crédito</li>
+                <li>Como negociar com credores</li>
+                <li>Importância de manter histórico de pagamentos</li>
+            </ul>
+
+            <h3>Estratégia 2: Casos de Sucesso</h3>
+            <p>Criar posts mostrando:</p>
+            <ul>
+                <li>Histórias reais de clientes</li>
+                <li>Passo a passo do processo</li>
+                <li>Depoimentos honestos</li>
+                <li>Antes e depois (score, não dinheiro)</li>
+                <li>Lições aprendidas</li>
+            </ul>
+
+            <h3>Estratégia 3: Conscientização</h3>
+            <p>Campanhas sobre:</p>
+            <ul>
+                <li>Importância de bom histórico de crédito</li>
+                <li>Riscos de endividamento</li>
+                <li>Como evitar negativação</li>
+                <li>Direitos do consumidor</li>
+                <li>Transparência financeira</li>
+            </ul>
+
+            <h3>Estratégia 4: Engajamento</h3>
+            <ul>
+                <li>Responder perguntas sobre crédito</li>
+                <li>Criar grupos de discussão</li>
+                <li>Fazer lives com especialistas</li>
+                <li>Conteúdo em resposta a dúvidas</li>
+                <li>Participar de conversas sobre direitos</li>
+            </ul>
+
+            <div class="success">
+                <strong>Resultado:</strong> Marketing saudável gera engajamento, constrói comunidade e evita bloqueios.
+            </div>
+        </section>
+
+        <section id="checklist">
+            <h2>Checklist de Conformidade</h2>
+            <p>Antes de publicar, verificar:</p>
+
+            <div class="checklist">
+                <h4>Conteúdo</h4>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check1">
+                    <label for="check1">Sem promessas "garantidas" ou "rápidas"?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check2">
+                    <label for="check2">Afirmações verificáveis?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check3">
+                    <label for="check3">Taxas, prazos e condições claros?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check4">
+                    <label for="check4">Sem apelo ao medo?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check5">
+                    <label for="check5">Sem atributos pessoais negativos?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check6">
+                    <label for="check6">Honesto e transparente?</label>
+                </div>
+
+                <h4 style="margin-top: 15px;">Imagens</h4>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check7">
+                    <label for="check7">Sem dinheiro, cartões ou riqueza?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check8">
+                    <label for="check8">Realistas, não enganosas?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check9">
+                    <label for="check9">Sem pessoas em vulnerabilidade?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check10">
+                    <label for="check10">Profissionais e confiáveis?</label>
+                </div>
+
+                <h4 style="margin-top: 15px;">Hashtags</h4>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check11">
+                    <label for="check11">Sem hashtags proibidas?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check12">
+                    <label for="check12">Sem termos enganosos?</label>
+                </div>
+
+                <h4 style="margin-top: 15px;">Legal</h4>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check13">
+                    <label for="check13">Contato e atendimento presentes?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check14">
+                    <label for="check14">Política e termos acessíveis?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check15">
+                    <label for="check15">Autorização regulatória clara?</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check16">
+                    <label for="check16">Sem violação de direitos?</label>
+                </div>
+            </div>
+
+            <div class="highlight" style="margin-top: 15px;">
+                <strong>Dica:</strong> Use este checklist antes de cada publicação.
+            </div>
+        </section>
+
+        <section id="quiz">
+            <h2>Quiz de Avaliação</h2>
+            <p>Teste seu conhecimento sobre conformidade:</p>
+
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h4>P1: Por que Meta restringe anúncios financeiros?</h4>
+                    <div class="quiz-option">
+                        <input type="radio" name="q1" value="a" id="q1a">
+                        <label for="q1a">A) Aumentar receita</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q1" value="b" id="q1b">
+                        <label for="q1b">B) Proteger de conteúdo enganoso</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q1" value="c" id="q1c">
+                        <label for="q1c">C) Favorecer bancos</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q1" value="d" id="q1d">
+                        <label for="q1d">D) Sem razão</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>P2: Qual frase é PERMITIDA?</h4>
+                    <div class="quiz-option">
+                        <input type="radio" name="q2" value="a" id="q2a">
+                        <label for="q2a">A) "Aprovação garantida em 24h"</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q2" value="b" id="q2b">
+                        <label for="q2b">B) "Sem análise"</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q2" value="c" id="q2c">
+                        <label for="q2c">C) "Processo simplificado"</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q2" value="d" id="q2d">
+                        <label for="q2d">D) "Dinheiro na hora"</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>P3: O que é "atributo pessoal" proibido?</h4>
+                    <div class="quiz-option">
+                        <input type="radio" name="q3" value="a" id="q3a">
+                        <label for="q3a">A) Nome</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q3" value="b" id="q3b">
+                        <label for="q3b">B) Histórico de crédito ruim</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q3" value="c" id="q3c">
+                        <label for="q3c">C) Endereço</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q3" value="d" id="q3d">
+                        <label for="q3d">D) Profissão</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>P4: Qual imagem é PROIBIDA?</h4>
+                    <div class="quiz-option">
+                        <input type="radio" name="q4" value="a" id="q4a">
+                        <label for="q4a">A) Pessoa profissional</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q4" value="b" id="q4b">
+                        <label for="q4b">B) Ícone de segurança</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q4" value="c" id="q4c">
+                        <label for="q4c">C) Dinheiro em espécie</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q4" value="d" id="q4d">
+                        <label for="q4d">D) Gráfico educacional</label>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>P5: Prazo mínimo para empréstimo?</h4>
+                    <div class="quiz-option">
+                        <input type="radio" name="q5" value="a" id="q5a">
+                        <label for="q5a">A) 30 dias</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q5" value="b" id="q5b">
+                        <label for="q5b">B) 60 dias</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q5" value="c" id="q5c">
+                        <label for="q5c">C) 90 dias</label>
+                    </div>
+                    <div class="quiz-option">
+                        <input type="radio" name="q5" value="d" id="q5d">
+                        <label for="q5d">D) 120 dias</label>
+                    </div>
+                </div>
+
+                <button class="quiz-button" onclick="corrigirQuiz()">Corrigir</button>
+                <div class="quiz-result" id="resultado"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Conclusão</h2>
+            <p>A conformidade não é um obstáculo, mas uma oportunidade. Empresas que comunicam com honestidade, transparência e foco no cliente constroem confiança duradoura, evitam bloqueios regulatórios e crescem de forma sustentável.</p>
+            <p>O Grupo Positivo Brasil, ao seguir este manual, não apenas evitará restrições e banimentos, mas também se posicionará como líder em conformidade e responsabilidade no setor de serviços financeiros.</p>
+            <div class="success" style="margin-top: 15px;">
+                <strong>Próximos Passos:</strong> Compartilhe com a equipe. Faça o quiz regularmente. Mantenha-se atualizado. Sempre consulte antes de publicar.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Manual de Conformidade e Comunicação Segura</p>
+        <p>Grupo Positivo Brasil - Instagram e Facebook</p>
+        <p><a href="http://www.mfdireitodigital.com.br">www.mfdireitodigital.com.br</a></p>
+        <div class="signature">
+            MFDireitoDigital<br>
+            Consultoria em Conformidade Digital<br>
+            Novembro de 2025
+        </div>
+    </footer>
+
+    <script>
+        function corrigirQuiz() {
+            const respostas = {
+                q1: 'b',
+                q2: 'c',
+                q3: 'b',
+                q4: 'c',
+                q5: 'c'
+            };
+
+            let acertos = 0;
+            let total = Object.keys(respostas).length;
+
+            for (let pergunta in respostas) {
+                const selecionada = document.querySelector(`input[name="${pergunta}"]:checked`);
+                if (selecionada && selecionada.value === respostas[pergunta]) {
+                    acertos++;
+                }
+            }
+
+            const percentual = Math.round((acertos / total) * 100);
+            const resultado = document.getElementById('resultado');
+            
+            resultado.classList.add('show');
+            resultado.innerHTML = `
+                <strong>Resultado:</strong> ${acertos} de ${total} (${percentual}%)<br>
+                ${percentual >= 80 ? 'Excelente! Pronto para aplicar.' : 'Revise e tente novamente.'}
+            `;
+        }
+    </script>
+</body>
+</html>
